@@ -1,0 +1,396 @@
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    behaviors {
+        tp: tap_preferred {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAP_PREFERRED";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        hml: home_row_mod_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+
+            hold-trigger-key-positions = <5 6 7 8 9 9 15 16 18 19 26 27 28 29 30 31 35 36 37 17>;
+            hold-trigger-on-release;
+        };
+
+        hmr: home_row_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+
+            hold-trigger-key-positions = <20 21 0 10 22 11 1 2 12 23 3 4 13 14 24 24 25 33 32 34>;
+            hold-trigger-on-release;
+        };
+
+        num_word: num_word {
+            compatible = "zmk,behavior-auto-layer";
+            #binding-cells = <1>;
+            continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
+            ignore-numbers;
+        };
+
+        mm_comma: mm_comma {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_COMMA";
+            bindings = <&macro_comma>, <&kp SEMI>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_comma_ru: mm_comma_ru {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_COMMA_RU";
+            bindings = <&macro_comma_ru>, <&kp LS(N4)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_dot: mm_dot {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_DOT";
+            bindings = <&macro_dot>, <&kp LS(SEMI)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_dot_ru: mm_dot_ru {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_DOT_RU";
+            bindings = <&macro_dot_ru>, <&kp LS(N6)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_minus: mm_minus {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_MINUS";
+            bindings = <&kp MINUS>, <&kp MINUS>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        swap_win: swapper_win {
+            compatible = "zmk,behavior-tri-state";
+            label = "SWAPPER_WIN";
+            #binding-cells = <0>;
+            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+
+            ignored-key-positions = <13 16 17 18 19>;
+        };
+
+        swap_tab: swapper_tab {
+            compatible = "zmk,behavior-tri-state";
+            label = "SWAPPER_TAB";
+            #binding-cells = <0>;
+            bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+
+            ignored-key-positions = <13 16 17 18 19>;
+        };
+    };
+
+    macros {
+        macro_comma: macro_comma {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA &kp SPACE>;
+            label = "MACRO_COMMA";
+        };
+
+        macro_comma_ru: macro_comma_ru {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(SLASH) &kp SPACE>;
+            label = "MACRO_COMMA_RU";
+        };
+
+        macro_dot: macro_dot {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOT &kp SPACE &sk LSHFT>;
+            label = "MACRO_DOT";
+        };
+
+        macro_dot_ru: macro_dot_ru {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SLASH &kp SPACE &sk LSHFT>;
+            label = "MACRO_DOT_RU";
+        };
+
+        macro_lng: macro_lng {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp CAPS &tog 2>;
+            label = "MACRO_LNG";
+        };
+
+        macro_lng_en: macro_lng_sync {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp CAPS &to 0>;
+            label = "MACRO_LNG_SYNC";
+        };
+
+        macro_lt: macro_lt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp CAPS &kp LS(COMMA) &kp CAPS>;
+            label = "MACRO_LT";
+        };
+
+        macro_gt: macro_gt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp CAPS &kp LS(DOT) &kp CAPS>;
+            label = "MACRO_GT";
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        combo_lng_l {
+            bindings = <&macro_lng>;
+            key-positions = <16 4>;
+        };
+
+        combo_lng_r {
+            bindings = <&macro_lng>;
+            key-positions = <19 7>;
+        };
+
+        combo_esc {
+            bindings = <&kp ESC>;
+            key-positions = <15 3>;
+        };
+
+        combo_ret {
+            bindings = <&kp RET>;
+            key-positions = <19 31>;
+        };
+
+        combo_bspc {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <18 19>;
+        };
+
+        combo_spc {
+            bindings = <&kp SPACE>;
+            key-positions = <16 28>;
+        };
+
+        combo_num_word_en {
+            bindings = <&num_word 4>;
+            key-positions = <8 20>;
+            layers = <0>;
+        };
+
+        combo_caps_word {
+            bindings = <&caps_word>;
+            key-positions = <21 9>;
+        };
+
+        combo_ins {
+            bindings = <&kp INS>;
+            key-positions = <18 30>;
+        };
+
+        combo_mouse_l {
+            bindings = <&tog 9>;
+            key-positions = <5 4>;
+        };
+
+        combo_mouse_r {
+            bindings = <&tog 9>;
+            key-positions = <6 7>;
+        };
+
+        combo_num_word_ru {
+            bindings = <&num_word 5>;
+            key-positions = <8 20>;
+            layers = <2>;
+        };
+
+        combo_lbkt {
+            bindings = <&kp LBKT>;
+            key-positions = <10 9>;
+        };
+
+        combo_sqt {
+            bindings = <&kp SQT>;
+            key-positions = <21 22>;
+        };
+
+        combo_rbkt {
+            bindings = <&kp RBKT>;
+            key-positions = <33 34>;
+        };
+
+        combo_caps {
+            bindings = <&kp CAPS>;
+            key-positions = <6 18>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        en {
+            // ----------------------------------------------------------------------
+            // |  Q  |  W  |  E  |  R  | T    |   |  Y     |  U  |  I  |  O  |  P  |
+            // |  A  |  S  |  D  |  F  | G    |   |  H     |  J  |  K  |  L  |  ;  |
+            // |  Z  |  X  |  C  |  V  | B    |   |  N     |  M  |  ,  |  .  |  /  |
+            //                   | GUI | LWR  |   |  BKSP  | RSE |
+
+            bindings = <
+            &kp Q        &kp W        &kp E         &kp R         &kp T         &kp Y        &kp U         &kp I         &kp O        &kp P
+            &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHFT F  &lt 9 G       &kp H        &hmr LSHFT J  &hmr LCTRL K  &hmr LALT L  &hmr LGUI SEMI
+            &kp Z        &lt 8 X      &lt 4 C       &lt 6 V       &kp B         &kp N        &kp M         &kp COMMA     &kp DOT      &kp FSLH
+                                                    &lt 1 SPACE   &lt 11 ESC    &lt 4 ENTER  &mo 9
+            >;
+        };
+
+        ext {
+            bindings = <
+            &kp GRAVE           &kp BACKSPACE   &kp ESCAPE       &kp DEL          &kp LS(GRAVE)    &kp DEL        &kp HOME  &kp PG_UP  &kp PG_DN  &kp END
+            &tp LEFT_GUI LC(A)  &tp LALT LC(S)  &tp LCTRL LC(D)  &tp LSHFT LC(F)  &swap_win        &kp BACKSPACE  &kp LEFT  &kp UP     &kp DOWN   &kp RIGHT
+            &kp LC(Z)           &kp LC(X)       &kp LC(C)        &kp LC(V)        &swap_tab        &kp TAB        &kp RET   &mm_comma  &mm_dot    &mm_minus
+                                                                 &trans           &trans           &trans         &trans
+            >;
+        };
+
+        ru {
+            bindings = <
+            &trans  &trans  &trans   &trans       &trans    &trans  &trans  &trans  &trans  &trans
+            &trans  &trans  &trans   &trans       &trans    &trans  &trans  &trans  &trans  &trans
+            &trans  &trans  &lt 5 C  &lt 7 V      &trans    &trans  &trans  &trans  &trans  &trans
+                                     &lt 3 SPACE  &trans    &trans  &trans
+            >;
+        };
+
+        ru_ext {
+            bindings = <
+            &kp GRAVE           &kp BACKSPACE   &kp ESCAPE       &kp DEL          &kp CAPS     &kp DEL        &kp HOME  &kp PG_UP     &kp PG_DN   &kp END
+            &tp LEFT_GUI LC(A)  &tp LALT LC(S)  &tp LCTRL LC(D)  &tp LSHFT LC(F)  &swap_win    &kp BACKSPACE  &kp LEFT  &kp UP        &kp DOWN    &kp RIGHT
+            &kp LC(Z)           &kp LC(X)       &kp LC(C)        &kp LC(V)        &swap_tab    &kp TAB        &kp RET   &mm_comma_ru  &mm_dot_ru  &mm_minus
+                                                                 &trans           &trans       &trans         &trans
+            >;
+        };
+
+        num {
+            bindings = <
+            &none     &kp BACKSPACE  &kp ESC  &kp DEL    &none     &kp SLASH   &kp N9  &kp N0  &kp MINUS  &kp EQUAL
+            &none     &none          &none    &none      &none     &kp PERIOD  &kp N5  &kp N6  &kp N7     &kp N8
+            &kp LALT  &kp LCTRL      &none    &kp LSHFT  &none     &kp COMMA   &kp N1  &kp N2  &kp N3     &kp N4
+                                              &trans     &trans    &trans      &trans
+            >;
+        };
+
+        num_ru {
+            bindings = <
+            &none     &kp BACKSPACE  &kp ESC  &kp DEL    &none     &kp LS(BACKSLASH)  &kp N9  &kp N0  &kp MINUS  &kp EQUAL
+            &none     &none          &none    &none      &none     &kp SLASH          &kp N5  &kp N6  &kp N7     &kp N8
+            &kp LALT  &kp LCTRL      &none    &kp LSHFT  &none     &kp LS(SLASH)      &kp N1  &kp N2  &kp N3     &kp N4
+                                              &trans     &trans    &trans             &trans
+            >;
+        };
+
+        sym {
+            bindings = <
+            &trans    &trans    &trans     &trans  &trans    &kp GRAVE      &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LS(LEFT_BRACKET)  &kp LS(RIGHT_BRACKET)
+            &trans    &trans    &trans     &trans  &trans    &kp LS(GRAVE)  &kp MINUS         &kp LS(SEMI)       &kp LS(N7)            &kp LS(BACKSLASH)
+            &kp LGUI  &kp LALT  &kp LCTRL  &trans  &trans    &kp LS(N3)     &kp LS(MINUS)     &kp LS(NUMBER_6)   &kp LS(NUMBER_4)      &kp BACKSLASH
+                                           &trans  &trans    &trans         &trans
+            >;
+        };
+
+        sym_ru {
+            bindings = <
+            &trans  &trans  &trans  &trans  &trans    &kp LS(N7)  &kp LS(N9)  &kp LS(N0)  &kp LS(MINUS)  &kp LS(EQUAL)
+            &trans  &trans  &trans  &trans  &trans    &macro_gt   &kp LS(N5)  &kp LS(N6)  &kp LS(N7)     &kp LS(N8)
+            &trans  &trans  &trans  &trans  &trans    &macro_lt   &kp LS(N1)  &kp LS(N2)  &kp LS(N3)     &kp LS(N4)
+                                    &trans  &trans    &trans      &trans
+            >;
+        };
+
+        fn {
+            bindings = <
+            &none     &none     &none      &none      &none     &none   &kp F9  &kp F10  &kp F11  &kp F12
+            &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &none     &none   &kp F5  &kp F6   &kp F7   &kp F8
+            &none     &none     &none      &none      &none     &none   &kp F1  &kp F2   &kp F3   &kp F4
+                                           &trans     &trans    &trans  &trans
+            >;
+        };
+
+        mouse {
+            bindings = <
+            &mkp RCLK       &msc SCRL_DOWN  &msc SCRL_UP  &mkp LCLK        &none     &studio_unlock  &mkp LCLK       &msc SCRL_UP    &msc SCRL_DOWN  &mkp RCLK
+            &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &none     &none           &mmv MOVE_LEFT  &mmv MOVE_UP    &mmv MOVE_DOWN  &mmv MOVE_RIGHT
+            &kp LALT        &kp LCTRL       &kp LSHFT     &mkp LCLK        &none     &none           &mkp LCLK       &kp LSHFT       &kp LCTRL       &kp LALT
+                                                          &mo 10           &trans    &trans          &none
+            >;
+        };
+
+        mouse_ext {
+            bindings = <
+            &msc SCRL_LEFT     &msc SCRL_DOWN    &msc SCRL_UP       &msc SCRL_RIGHT   &trans    &trans  &msc SCRL_LEFT     &msc SCRL_UP       &msc SCRL_DOWN    &msc SCRL_RIGHT
+            &mmv MOVE_X(-200)  &mmv MOVE_Y(200)  &mmv MOVE_Y(-200)  &mmv MOVE_X(200)  &trans    &trans  &mmv MOVE_X(-200)  &mmv MOVE_Y(-200)  &mmv MOVE_Y(200)  &mmv MOVE_X(200)
+            &trans             &trans            &trans             &trans            &trans    &trans  &trans             &trans             &trans            &trans
+                                                                    &trans            &trans    &trans  &trans
+            >;
+        };
+
+        multi {
+            bindings = <
+            &trans  &trans  &trans  &trans        &trans     &trans  &trans   &trans     &trans   &trans
+            &kp N7  &kp N5  &kp N3  &kp N1        &kp N9     &kp N8  &kp N0   &kp N2     &kp N4   &kp N6
+            &trans  &trans  &trans  &trans        &trans     &trans  &trans   &kp COMMA  &kp DOT  &trans
+                                    &lt 12 SPACE  &tog 11    &trans  &tog 11
+            >;
+        };
+
+        multi_ext {
+            bindings = <
+            &none         &kp BACKSPACE  &tog 11    &kp DEL    &none        &kp BACKSPACE  &kp HOME  &kp PG_UP     &kp PG_DN   &kp END
+            &sk LEFT_GUI  &sk LALT       &sk LCTRL  &sk LSHFT  &kp SPACE    &kp TAB        &kp LEFT  &kp UP        &kp DOWN    &kp RIGHT
+            &none         &none          &none      &none      &kp DEL      &kp BACKSPACE  &kp RET   &mm_comma_ru  &mm_dot_ru  &mm_minus
+                                                    &trans     &trans       &trans       &trans
+            >;
+        };
+
+        sys {
+            bindings = <
+            &bootloader  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &bootloader
+            &trans       &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+            &trans       &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+                                         &trans  &trans    &trans  &trans
+            >;
+        };
+    };
+};
