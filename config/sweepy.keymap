@@ -195,8 +195,8 @@
             key-positions = <16 26>;
         };
 
-        combo_bspc {
-            bindings = <&kp BACKSPACE>;
+        combo_tab {
+            bindings = <&kp TAB>;
             key-positions = <15 16>;
         };
 
