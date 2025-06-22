@@ -365,5 +365,32 @@
                                                                     &trans            &trans    &trans  &trans
             >;
         };
+
+        multi {
+            bindings = <
+            &trans  &trans  &trans  &trans        &trans     &trans  &trans   &trans     &trans   &trans
+            &kp N7  &kp N5  &kp N3  &kp N1        &kp N9     &kp N8  &kp N0   &kp N2     &kp N4   &kp N6
+            &trans  &trans  &trans  &trans        &trans     &trans  &trans   &kp COMMA  &kp DOT  &trans
+                                    &lt 12 SPACE  &tog 11    &trans  &tog 11
+            >;
+        };
+
+        multi_ext {
+            bindings = <
+            &none         &kp BACKSPACE  &tog 11    &kp DEL    &none        &kp BACKSPACE  &kp HOME  &kp PG_UP     &kp PG_DN   &kp END
+            &sk LEFT_GUI  &sk LALT       &sk LCTRL  &sk LSHFT  &kp SPACE    &kp TAB        &kp LEFT  &kp UP        &kp DOWN    &kp RIGHT
+            &none         &none          &none      &none      &kp DEL      &kp BACKSPACE  &kp RET   &mm_comma_ru  &mm_dot_ru  &mm_minus
+                                                    &trans     &trans       &trans       &trans
+            >;
+        };
+
+        sys {
+            bindings = <
+            &bootloader  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &bootloader
+            &trans       &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+            &trans       &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+                                         &trans  &trans    &trans  &trans
+            >;
+        };
     };
 };
