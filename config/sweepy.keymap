@@ -224,11 +224,13 @@
         combo_mouse_l {
             bindings = <&tog 9>;
             key-positions = <4 3>;
+            layers = <1 3 9 10>;
         };
 
         combo_mouse_r {
             bindings = <&tog 9>;
             key-positions = <6 5>;
+            layers = <1 3 9 10>;
         };
 
         combo_num_word_ru {
