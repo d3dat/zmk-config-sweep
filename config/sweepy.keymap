@@ -302,5 +302,41 @@
                                                                  &trans           &trans       &trans         &trans
             >;
         };
+
+        num {
+            bindings = <
+            &none     &kp BACKSPACE  &kp ESC  &kp DEL    &none     &kp SLASH   &kp N9  &kp N0  &kp MINUS  &kp EQUAL
+            &none     &none          &none    &none      &none     &kp PERIOD  &kp N5  &kp N6  &kp N7     &kp N8
+            &kp LALT  &kp LCTRL      &none    &kp LSHFT  &none     &kp COMMA   &kp N1  &kp N2  &kp N3     &kp N4
+                                              &trans     &trans    &trans      &trans
+            >;
+        };
+
+        num_ru {
+            bindings = <
+            &none     &kp BACKSPACE  &kp ESC  &kp DEL    &none     &kp LS(BACKSLASH)  &kp N9  &kp N0  &kp MINUS  &kp EQUAL
+            &none     &none          &none    &none      &none     &kp SLASH          &kp N5  &kp N6  &kp N7     &kp N8
+            &kp LALT  &kp LCTRL      &none    &kp LSHFT  &none     &kp LS(SLASH)      &kp N1  &kp N2  &kp N3     &kp N4
+                                              &trans     &trans    &trans             &trans
+            >;
+        };
+
+        sym {
+            bindings = <
+            &trans    &trans    &trans     &trans  &trans    &kp GRAVE      &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LS(LEFT_BRACKET)  &kp LS(RIGHT_BRACKET)
+            &trans    &trans    &trans     &trans  &trans    &kp LS(GRAVE)  &kp MINUS         &kp LS(SEMI)       &kp LS(N7)            &kp LS(BACKSLASH)
+            &kp LGUI  &kp LALT  &kp LCTRL  &trans  &trans    &kp LS(N3)     &kp LS(MINUS)     &kp LS(NUMBER_6)   &kp LS(NUMBER_4)      &kp BACKSLASH
+                                           &trans  &trans    &trans         &trans
+            >;
+        };
+
+        sym_ru {
+            bindings = <
+            &trans  &trans  &trans  &trans  &trans    &kp LS(N7)  &kp LS(N9)  &kp LS(N0)  &kp LS(MINUS)  &kp LS(EQUAL)
+            &trans  &trans  &trans  &trans  &trans    &macro_gt   &kp LS(N5)  &kp LS(N6)  &kp LS(N7)     &kp LS(N8)
+            &trans  &trans  &trans  &trans  &trans    &macro_lt   &kp LS(N1)  &kp LS(N2)  &kp LS(N3)     &kp LS(N4)
+                                    &trans  &trans    &trans      &trans
+            >;
+        };
     };
 };
