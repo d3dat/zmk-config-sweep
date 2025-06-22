@@ -256,6 +256,18 @@
             bindings = <&kp CAPS>;
             key-positions = <5 15>;
         };
+
+        combo_bootloader_left {
+            bindings = <&bootloader>;
+            key-positions = <0 24>;
+            layers = <0>;
+        };
+
+        combo_bootloader_right {
+            bindings = <&bootloader>;
+            key-positions = <25 9>;
+            layers = <0>;
+        };
     };
 
     keymap {
