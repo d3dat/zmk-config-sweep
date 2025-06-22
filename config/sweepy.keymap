@@ -26,7 +26,7 @@
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
 
-            hold-trigger-key-positions = <5 6 7 8 9 9 15 16 18 19 26 27 28 29 30 31 35 36 37 17>;
+            hold-trigger-key-positions = <5 6 7 8 9 9 15 16 18 19 26 27 28 29 35 36 37 17 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33>;
             hold-trigger-on-release;
         };
 
@@ -39,7 +39,7 @@
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
 
-            hold-trigger-key-positions = <20 21 0 10 22 11 1 2 12 23 3 4 13 14 24 24 25 33 32 34>;
+            hold-trigger-key-positions = <20 21 0 10 22 11 1 2 12 23 3 4 13 14 24 24 34 30 31>;
             hold-trigger-on-release;
         };
 
@@ -177,84 +177,84 @@
 
         combo_lng_l {
             bindings = <&macro_lng>;
-            key-positions = <16 4>;
+            key-positions = <3 13>;
         };
 
         combo_lng_r {
             bindings = <&macro_lng>;
-            key-positions = <19 7>;
+            key-positions = <6 16>;
         };
 
         combo_esc {
             bindings = <&kp ESC>;
-            key-positions = <15 3>;
+            key-positions = <2 12>;
         };
 
         combo_ret {
             bindings = <&kp RET>;
-            key-positions = <19 31>;
+            key-positions = <16 26>;
         };
 
         combo_bspc {
             bindings = <&kp BACKSPACE>;
-            key-positions = <18 19>;
+            key-positions = <15 16>;
         };
 
         combo_spc {
             bindings = <&kp SPACE>;
-            key-positions = <16 28>;
+            key-positions = <13 23>;
         };
 
         combo_num_word_en {
             bindings = <&num_word 4>;
-            key-positions = <8 20>;
+            key-positions = <7 17>;
             layers = <0>;
         };
 
         combo_caps_word {
             bindings = <&caps_word>;
-            key-positions = <21 9>;
+            key-positions = <8 18>;
         };
 
         combo_ins {
             bindings = <&kp INS>;
-            key-positions = <18 30>;
+            key-positions = <15 25>;
         };
 
         combo_mouse_l {
             bindings = <&tog 9>;
-            key-positions = <5 4>;
+            key-positions = <4 3>;
         };
 
         combo_mouse_r {
             bindings = <&tog 9>;
-            key-positions = <6 7>;
+            key-positions = <6 5>;
         };
 
         combo_num_word_ru {
             bindings = <&num_word 5>;
-            key-positions = <8 20>;
+            key-positions = <7 17>;
             layers = <2>;
         };
 
         combo_lbkt {
             bindings = <&kp LBKT>;
-            key-positions = <10 9>;
+            key-positions = <9 8>;
         };
 
         combo_sqt {
             bindings = <&kp SQT>;
-            key-positions = <21 22>;
+            key-positions = <18 19>;
         };
 
         combo_rbkt {
             bindings = <&kp RBKT>;
-            key-positions = <33 34>;
+            key-positions = <34 29 28>;
         };
 
         combo_caps {
             bindings = <&kp CAPS>;
-            key-positions = <6 18>;
+            key-positions = <5 15>;
         };
     };
 
